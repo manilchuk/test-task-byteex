@@ -51,18 +51,18 @@ export default function Hero() {
           <Image
             src="/images/avatar-amy.webp"
             alt=""
-            width={28}
-            height={28}
+            width={39}
+            height={39}
             className={styles.avatar}
           />
-          <figcaption>
+          <figcaption className={styles.headerText}>
             <b>Amy P.</b>{' '}
             <span className={styles.stars} aria-label="5 stars">
               <svg className={styles.star} aria-hidden="true">
                 <use href="/icons/sprite.svg#icon-stars" />
               </svg>
             </span>{' '}
-            <small>One of 500+ 5 Star Reviews Online</small>
+            <span className={styles.reviewText}>One of 500+ 5 Star Reviews Online</span>
           </figcaption>
           <p>
             Overjoyed with my Loungewear set. I have the jogger and the sweatshirt. Quality product

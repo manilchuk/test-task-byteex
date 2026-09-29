@@ -88,5 +88,11 @@
 <symbol id="icon-arrow" viewBox="0 0 74 32">
 <path fill="#fff" style="fill: var(--color1, #fff)" d="M57.943 32l15.657-16-15.657-16-4.704 4.807 7.627 7.794h-60.866v6.798h60.866l-7.627 7.794 4.704 4.807z"></path>
 </symbol>
+<symbol id="icon-arrow-left" viewBox="0 0 17 32">
+<path fill="none" stroke="#676869" style="stroke: var(--color1, #676869)" stroke-linejoin="round" stroke-linecap="square" stroke-miterlimit="4" stroke-width="2.6667" d="M15.287 29.786l-13.953-13.95 13.953-13.951"></path>
+</symbol>
+<symbol id="icon-arrow-right" viewBox="0 0 17 32">
+<path fill="none" stroke="#676869" style="stroke: var(--color1, #676869)" stroke-linejoin="round" stroke-linecap="square" stroke-miterlimit="4" stroke-width="2.6667" d="M1.886 29.786l13.953-13.95-13.953-13.951"></path>
+</symbol>
 </defs>
 </svg>
