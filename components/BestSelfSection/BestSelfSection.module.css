@@ -1,0 +1,88 @@
+.section {
+  padding: 83px 0 95px;
+  background-color: var(--color-background-light);
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.gallery {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 524px;
+  height: 664px;
+}
+
+.photoFirst {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 165px;
+  height: 175px;
+  object-fit: cover;
+  object-position: top;
+  border: solid 4px var(--color-background-light);
+}
+
+.photoSecond {
+  width: 382px;
+  height: 570px;
+}
+
+.photoLast {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 129px;
+  height: 175px;
+  object-fit: cover;
+  object-position: top;
+  border: solid 4px var(--color-background-light);
+}
+
+.list {
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  max-width: 642px;
+}
+
+.title {
+  font-family: var(--font-sofia-pro), sans-serif;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 1.25;
+  letter-spacing: 0.04em;
+  color: var(--color-indigo);
+  margin-bottom: 16px;
+}
+
+.list p {
+  font-family: var(--font-sofia-pro), sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: 0.03em;
+  color: var(--color-gray-600);
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 356px;
+  height: 56px;
+  border-radius: 5px;
+  background-color: var(--color-navy);
+  font-family: var(--font-suisse-int), sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 0.03em;
+  text-align: center;
+  color: var(--background);
+}
