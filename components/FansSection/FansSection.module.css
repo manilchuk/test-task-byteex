@@ -1,0 +1,200 @@
+.section {
+  padding-top: 37px;
+  padding-bottom: 54px;
+  text-align: center;
+}
+
+.heading h2 {
+  font-family: var(--font-sofia-pro), sans-serif;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 1.25;
+  letter-spacing: 0.04em;
+  text-align: center;
+  color: var(--color-navy);
+  margin-bottom: 40px;
+}
+
+.heading p {
+  max-width: 648px;
+  font-family: var(--font-sofia-pro), sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.5;
+  letter-spacing: 0.03em;
+  text-align: center;
+  color: var(--foreground);
+  margin: 0 auto 55px;
+}
+
+.mosaic {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(11, 1fr);
+  gap: 5px;
+  margin-bottom: 75px;
+}
+
+.mosaic img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.reviews {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 63px;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.arrow:first-child {
+  left: 0;
+}
+
+.arrow:last-child {
+  right: 0;
+}
+
+.arrow:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.arrow svg {
+  width: 10px;
+  height: 21px;
+}
+
+.viewport {
+  flex: 0 0 1114px;
+  width: 1114px;
+  box-sizing: border-box;
+  overflow: hidden;
+  padding: 8px;
+  margin-inline: auto;
+}
+
+.track {
+  display: flex;
+  gap: 42px;
+  width: max-content;
+  transition: transform 0.5s ease;
+}
+
+.quote {
+  flex: 0 0 338px;
+  box-sizing: border-box;
+  box-shadow: 0 3px 10px 1px rgba(0, 0, 0, 0.08);
+  background-color: var(--background);
+  padding: 29px 37px;
+  text-align: left;
+}
+
+.quoteHeader {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.avatar {
+  width: 39px;
+  height: 39px;
+  border-radius: 100%;
+  background: var(--color-avatar);
+}
+
+.avtor {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+}
+
+.stars svg {
+  width: 60px;
+  height: 10px;
+}
+
+.avtor b {
+  font-family: var(--font-sofia-pro), sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.5;
+  letter-spacing: 0.03em;
+  color: var(--foreground);
+}
+
+.quote p {
+  font-family: var(--font-suisse-int), sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.9;
+  letter-spacing: 0.04em;
+  color: var(--foreground);
+}
+
+.cta {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  background: var(--color-navy);
+  padding: 14px 28px;
+  border-radius: 5px;
+  width: 369px;
+  height: 56px;
+  font-family: var(--font-suisse-int), sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 0.03em;
+  text-align: center;
+  color: var(--background);
+  margin-bottom: 11px;
+}
+
+.cta svg {
+  width: 23px;
+  height: 10px;
+}
+
+.proof {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-suisse-int), sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  color: var(--color-gray-500);
+}
+
+.stars svg {
+  width: 80px;
+  height: 13px;
+  fill: currentColor;
+}
+
+@media (max-width: 700px) {
+  .mosaic {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}

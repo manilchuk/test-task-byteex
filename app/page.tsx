@@ -3,6 +3,7 @@ import Press from '@/components/Press/Press';
 import Features from '@/components/Features/Features';
 import BestSelfSection from '@/components/BestSelfSection/BestSelfSection';
 import ComfortSection from '@/components/ComfortSection/ComfortSection';
+import FansSection from '@/components/FansSection/FansSection';
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <Features />
       <BestSelfSection />
       <ComfortSection />
+      <FansSection />
     </>
   );
 }
