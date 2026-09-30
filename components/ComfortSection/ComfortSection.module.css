@@ -1,0 +1,125 @@
+.section {
+  padding: 75px 0 37px;
+  text-align: center;
+}
+
+.title {
+  font-family: var(--font-sofia-pro), sans-serif;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 1.25;
+  letter-spacing: 0.04em;
+  text-align: center;
+  color: var(--color-navy);
+  margin-bottom: 46px;
+}
+
+.cards {
+  display: flex;
+  gap: 41px;
+  max-width: 1120px;
+  margin: 0 auto 56px;
+}
+
+.card {
+  border: 1px solid #ededed;
+  border-radius: 8px;
+  width: 346px;
+  height: 321px;
+  background: var(--color-background-light);
+  padding: 77px 35px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.card:nth-child(1) .icon {
+  width: 51px;
+  height: 51px;
+}
+
+.card:nth-child(2) .icon {
+  width: 68px;
+  height: 49px;
+}
+
+.card:nth-child(3) .icon {
+  width: 60px;
+  height: 60px;
+}
+
+.card h3 {
+  font-family: var(--font-sofia-pro), sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.8;
+  letter-spacing: 0.04em;
+  text-align: center;
+  color: var(--color-navy);
+}
+
+.card p {
+  font-family: var(--font-sofia-pro), sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.53333;
+  letter-spacing: 0.03em;
+  text-align: center;
+  color: var(--foreground);
+}
+
+.cardTint {
+  background: var(--color-cream);
+}
+
+.cta {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  background: var(--color-navy);
+  padding: 14px 28px;
+  border-radius: 5px;
+  width: 369px;
+  height: 56px;
+  font-family: var(--font-suisse-int), sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 0.03em;
+  text-align: center;
+  color: var(--background);
+  margin-bottom: 11px;
+}
+
+.cta svg {
+  width: 23px;
+  height: 10px;
+}
+
+.proof {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+
+  font-family: var(--font-suisse-int), sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  color: var(--color-gray-500);
+}
+
+.stars svg {
+  width: 80px;
+  height: 13px;
+  fill: currentColor;
+}
+
+@media (max-width: 700px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
