@@ -1,5 +1,3 @@
-/* components/ComfortSection/ComfortSection.module.css */
-
 .section {
   padding: 75px 0 37px;
   text-align: center;
@@ -16,11 +14,39 @@
   margin-bottom: 46px;
 }
 
+.carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 0 auto 56px;
+}
+
+.arrow {
+  display: none;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--color-navy);
+  cursor: pointer;
+}
+
+.arrow svg {
+  width: 11px;
+  height: 21px;
+  fill: currentColor;
+  stroke: currentColor;
+}
+
 .cards {
   display: flex;
   gap: 41px;
   max-width: 1120px;
-  margin: 0 auto 56px;
 }
 
 .card {
@@ -125,8 +151,36 @@
   fill: currentColor;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 900px) {
+  .section {
+    padding: 48px 0 40px;
+  }
+
+  .title {
+    font-size: 26px;
+    margin-bottom: 32px;
+  }
+
+  .arrow {
+    display: flex;
+  }
+
   .cards {
-    grid-template-columns: 1fr;
+    width: 100%;
+    max-width: 346px;
+  }
+
+  .card {
+    display: none;
+    width: 100%;
+  }
+
+  .cardActive {
+    display: flex;
+  }
+
+  .cta {
+    width: 100%;
+    max-width: 400px;
   }
 }

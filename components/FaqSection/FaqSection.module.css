@@ -55,6 +55,7 @@
 .icon {
   width: 20px;
   height: 20px;
+  flex: none;
 }
 
 .answer p {
@@ -128,9 +129,27 @@
 @media (max-width: 900px) {
   .section {
     flex-direction: column;
+    gap: 0;
+    padding-top: 32px;
+    padding-bottom: 48px;
   }
+
+  .list {
+    max-width: none;
+  }
+
+  .list h2 {
+    font-size: 24px;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  .question {
+    font-size: 15px;
+    padding: 18px 0;
+  }
+
   .gallery {
-    width: 100%;
-    order: -1;
+    display: none;
   }
 }

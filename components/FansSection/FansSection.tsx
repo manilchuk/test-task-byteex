@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './FansSection.module.css';
@@ -60,13 +60,25 @@ const TESTIMONIALS = [
 
 const CARD_WIDTH = 338;
 const GAP = 42;
-const REVIEWS_PER_PAGE = 3;
-const PAGE_STEP = REVIEWS_PER_PAGE * (CARD_WIDTH + GAP);
 
 export default function FansSection() {
   const [currentPage, setCurrentPage] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
-  const totalPages = Math.ceil(TESTIMONIALS.length / REVIEWS_PER_PAGE);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth <= 900);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
+
+  const reviewsPerPage = isMobile ? 1 : 3;
+  const pageStep = reviewsPerPage * (CARD_WIDTH + GAP);
+  const totalPages = Math.ceil(TESTIMONIALS.length / reviewsPerPage);
+
+  useEffect(() => {
+    setCurrentPage(0);
+  }, [reviewsPerPage]);
 
   const isFirstPage = currentPage === 0;
   const isLastPage = currentPage === totalPages - 1;
@@ -119,7 +131,7 @@ export default function FansSection() {
           <div
             className={styles.track}
             style={{
-              transform: `translateX(-${currentPage * PAGE_STEP}px)`,
+              transform: `translateX(-${currentPage * pageStep}px)`,
             }}
           >
             {TESTIMONIALS.map(({ id, name, text }) => (
@@ -155,6 +167,20 @@ export default function FansSection() {
             <use href="/icons/sprite.svg#icon-arrow-right" />
           </svg>
         </button>
+      </div>
+
+      <div className={styles.dots} role="tablist" aria-label="Review page">
+        {Array.from({ length: totalPages }, (_, i) => (
+          <button
+            key={i}
+            type="button"
+            role="tab"
+            aria-selected={i === currentPage}
+            aria-label={`Show reviews page ${i + 1}`}
+            className={`${styles.dot} ${i === currentPage ? styles.dotActive : ''}`}
+            onClick={() => setCurrentPage(i)}
+          />
+        ))}
       </div>
 
       <Link href="#customize" className={styles.cta}>

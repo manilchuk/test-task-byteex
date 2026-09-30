@@ -30,3 +30,20 @@
 .logo {
   display: inline-block;
 }
+
+@media (max-width: 900px) {
+  .topbar {
+    font-size: 9px;
+    line-height: 1.8;
+    padding: 10px 16px;
+    margin-bottom: 20px;
+  }
+
+  .topbar span:not(:last-child)::after {
+    margin: 0 8px;
+  }
+
+  .logoRow {
+    justify-content: center;
+  }
+}

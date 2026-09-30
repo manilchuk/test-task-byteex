@@ -8,7 +8,7 @@ const FAQ = [
   {
     id: 1,
     q: 'lorem ipsum dolor sit amet',
-    a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lobortis sapien facilisis tincidunt pellentesque. In eget ipsum et felis finibus consequat.',
+    a: 'Our fabrics and garments are made in Portugal. We build strong relationships with our immediate suppliers and visit as often as possible.',
   },
   {
     id: 2,
@@ -33,6 +33,7 @@ const FAQ = [
 ];
 
 export default function FaqSection() {
+  // Перше питання відкрите за замовчуванням (open = 0) — так і на десктопі, і на мобільному макеті.
   const [open, setOpen] = useState(0);
 
   return (

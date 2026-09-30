@@ -23,54 +23,7 @@ const BULLETS = [
 export default function Hero() {
   return (
     <section className={`container ${styles.hero}`}>
-      <div className={styles.copy}>
-        <h1 className={styles.title}>Don&rsquo;t apologize for being comfortable.</h1>
-
-        <ul className={styles.bullets}>
-          {BULLETS.map(({ id, icon, text }) => (
-            <li key={id} className={styles.bullet}>
-              <svg className={styles.bulletIcon} aria-hidden="true" width={31} height={31}>
-                <use href={icon} />
-              </svg>
-
-              <p className={styles.bulletText}>{text}</p>
-            </li>
-          ))}
-        </ul>
-
-        <Link href="#customize" className={styles.cta}>
-          Customize Your Outfit{' '}
-          <span className={styles.arrow} aria-hidden="true">
-            <svg>
-              <use href="/icons/sprite.svg#icon-arrow" />
-            </svg>
-          </span>
-        </Link>
-
-        <figure className={styles.review}>
-          <Image
-            src="/images/avatar-amy.webp"
-            alt=""
-            width={39}
-            height={39}
-            className={styles.avatar}
-          />
-          <figcaption className={styles.headerText}>
-            <b>Amy P.</b>{' '}
-            <span className={styles.stars} aria-label="5 stars">
-              <svg className={styles.star} aria-hidden="true">
-                <use href="/icons/sprite.svg#icon-stars" />
-              </svg>
-            </span>{' '}
-            <span className={styles.reviewText}>One of 500+ 5 Star Reviews Online</span>
-          </figcaption>
-          <p>
-            Overjoyed with my Loungewear set. I have the jogger and the sweatshirt. Quality product
-            on every level. From the compostable packaging, to the supplied washing bag, even the
-            garments smells like fresh herbs when I first held them.
-          </p>
-        </figure>
-      </div>
+      <h1 className={styles.title}>Don&rsquo;t apologize for being comfortable.</h1>
 
       <div className={styles.collage} aria-hidden="true">
         <Image
@@ -97,6 +50,51 @@ export default function Hero() {
         <div className={styles.shadow1} aria-hidden="true" />
         <div className={styles.shadow2} aria-hidden="true" />
       </div>
+
+      <ul className={styles.bullets}>
+        {BULLETS.map(({ id, icon, text }) => (
+          <li key={id} className={styles.bullet}>
+            <svg className={styles.bulletIcon} aria-hidden="true" width={31} height={31}>
+              <use href={icon} />
+            </svg>
+
+            <p className={styles.bulletText}>{text}</p>
+          </li>
+        ))}
+      </ul>
+
+      <Link href="#customize" className={styles.cta}>
+        Customize Your Outfit{' '}
+        <span className={styles.arrow} aria-hidden="true">
+          <svg>
+            <use href="/icons/sprite.svg#icon-arrow" />
+          </svg>
+        </span>
+      </Link>
+
+      <figure className={styles.review}>
+        <Image
+          src="/images/avatar-amy.webp"
+          alt=""
+          width={39}
+          height={39}
+          className={styles.avatar}
+        />
+        <figcaption className={styles.headerText}>
+          <b>Amy P.</b>{' '}
+          <span className={styles.stars} aria-label="5 stars">
+            <svg className={styles.star} aria-hidden="true">
+              <use href="/icons/sprite.svg#icon-stars" />
+            </svg>
+          </span>{' '}
+          <span className={styles.reviewText}>One of 500+ 5 Star Reviews Online</span>
+        </figcaption>
+        <p>
+          Overjoyed with my Loungewear set. I have the jogger and the sweatshirt. Quality product on
+          every level. From the compostable packaging, to the supplied washing bag, even the
+          garments smells like fresh herbs when I first held them.
+        </p>
+      </figure>
     </section>
   );
 }
