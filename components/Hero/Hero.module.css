@@ -37,6 +37,13 @@
   gap: 10px;
   align-items: center;
 }
+
+.bulletIcon {
+  flex: 0 0 31px;
+  width: 31px;
+  height: 31px;
+}
+
 .bulletText {
   max-width: 430px;
   font-family: var(--font-sofia-pro), sans-serif;
@@ -93,7 +100,9 @@
 
 .review {
   grid-area: review;
-  position: relative;
+  position: absolute;
+  left: 0;
+  bottom: -146px;
   max-width: 420px;
   border-radius: 8px;
   z-index: 2;
@@ -147,7 +156,7 @@
   color: var(--color-gray-500);
 }
 
-.review p {
+.reviewTextDesktop {
   grid-column: 1 / -1;
   margin-top: 12px;
   font-family: var(--font-suisse-int), sans-serif;
@@ -156,6 +165,10 @@
   line-height: 1.91667;
   letter-spacing: 0.04em;
   color: var(--foreground);
+}
+
+.reviewTextMobile {
+  display: none;
 }
 
 .collage {
@@ -236,19 +249,36 @@
 
   .title {
     font-size: 26px;
-    text-align: left;
+    text-align: center;
   }
 
   .cta {
     width: 100%;
     max-width: 400px;
     margin-inline: auto;
+    margin-bottom: 60px;
   }
 
   .review {
+    bottom: -80px;
     width: 100%;
     max-width: none;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  }
+
+  .reviewTextDesktop {
+    display: none;
+  }
+  .reviewTextMobile {
+    display: block;
+    grid-column: 1 / -1;
+    margin-top: 12px;
+    font-family: var(--font-suisse-int), sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.91667;
+    letter-spacing: 0.04em;
+    color: var(--foreground);
   }
 
   .collage {

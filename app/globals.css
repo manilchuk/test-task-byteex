@@ -79,6 +79,7 @@ h4 {
 .container {
   max-width: var(--container-w);
   margin-inline: auto;
+  padding: 0 24px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -88,5 +89,11 @@ h4 {
   * {
     transition: none !important;
     animation: none !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .container {
+    padding: 0 16px;
   }
 }

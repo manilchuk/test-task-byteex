@@ -89,10 +89,15 @@ export default function Hero() {
           </span>{' '}
           <span className={styles.reviewText}>One of 500+ 5 Star Reviews Online</span>
         </figcaption>
-        <p>
+        <p className={styles.reviewTextDesktop}>
           Overjoyed with my Loungewear set. I have the jogger and the sweatshirt. Quality product on
           every level. From the compostable packaging, to the supplied washing bag, even the
           garments smells like fresh herbs when I first held them.
+        </p>
+
+        <p className={styles.reviewTextMobile}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sed sollicitudin
+          dolor, non sodales justo.
         </p>
       </figure>
     </section>
