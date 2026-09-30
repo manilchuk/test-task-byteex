@@ -5,6 +5,7 @@ import BestSelfSection from '@/components/BestSelfSection/BestSelfSection';
 import ComfortSection from '@/components/ComfortSection/ComfortSection';
 import FansSection from '@/components/FansSection/FansSection';
 import FaqSection from '@/components/FaqSection/FaqSection';
+import ImpactSection from '@/components/ImpactSection/ImpactSection';
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <ComfortSection />
       <FansSection />
       <FaqSection />
+      <ImpactSection />
     </>
   );
 }
