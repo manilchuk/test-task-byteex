@@ -195,6 +195,28 @@
   z-index: 1;
 }
 
+.shadow1 {
+  position: absolute;
+  left: -67px;
+  top: 116px;
+  z-index: 0;
+  width: 134px;
+  height: 189px;
+  background: linear-gradient(180deg, rgba(249, 240, 229, 0.7) 0%, rgba(249, 240, 229, 0.22) 100%);
+  rotate: -180deg;
+}
+
+.shadow2 {
+  position: absolute;
+  right: -67px;
+  top: 116px;
+  z-index: 0;
+  width: 134px;
+  height: 189px;
+  background: linear-gradient(180deg, rgba(249, 240, 229, 0.7) 0%, rgba(249, 240, 229, 0.22) 100%);
+  rotate: -180deg;
+}
+
 @media (max-width: 900px) {
   .hero {
     grid-template-columns: 1fr;

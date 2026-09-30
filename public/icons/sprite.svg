@@ -94,5 +94,11 @@
 <symbol id="icon-arrow-right" viewBox="0 0 17 32">
 <path fill="none" stroke="#676869" style="stroke: var(--color1, #676869)" stroke-linejoin="round" stroke-linecap="square" stroke-miterlimit="4" stroke-width="2.6667" d="M1.886 29.786l13.953-13.95-13.953-13.951"></path>
 </symbol>
+<symbol id="icon-plus" viewBox="0 0 32 32">
+<path fill="#01005b" style="fill: var(--color1, #01005b)" d="M0 13.767v3.442h13.845v13.924h3.442v-13.924h13.924v-3.442h-13.924v-13.767h-3.442v13.767h-13.845z"></path>
+</symbol>
+<symbol id="icon-minus" viewBox="0 0 240 32">
+<path fill="#01005b" style="fill: var(--color1, #01005b)" d="M-0.001 30.272h231.617v-30.272h-231.617v30.272z"></path>
+</symbol>
 </defs>
 </svg>

@@ -94,6 +94,8 @@ export default function Hero() {
           height={316}
           className={`${styles.photo} ${styles.photo3}`}
         />
+        <div className={styles.shadow1} aria-hidden="true" />
+        <div className={styles.shadow2} aria-hidden="true" />
       </div>
     </section>
   );

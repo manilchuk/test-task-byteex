@@ -1,0 +1,136 @@
+.section {
+  display: flex;
+  gap: 88px;
+  align-items: flex-start;
+  padding-top: 54px;
+  padding-bottom: 88px;
+}
+
+.list {
+  flex: 1;
+  min-width: 0;
+  max-width: 630px;
+}
+
+.list h2 {
+  font-family: var(--font-sofia-pro), sans-serif;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 1.25;
+  letter-spacing: 0.04em;
+  color: var(--color-navy);
+  margin-bottom: 56px;
+}
+
+.faq {
+  list-style: none;
+  max-width: 630px;
+}
+
+.faq li {
+  border-bottom: 1px solid var(--color-gray-200);
+  padding-right: 38px;
+}
+.faq li:first-child {
+  border-top: 1px solid var(--color-gray-200);
+}
+
+.question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  border: 0;
+  padding: 24px 0;
+  font-family: var(--font-sofia-pro), sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.3;
+  letter-spacing: 0.04em;
+  color: var(--color-navy);
+  text-align: left;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+}
+
+.answer p {
+  font-family: var(--font-sofia-pro), sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.4;
+  letter-spacing: 0.03em;
+  color: var(--foreground);
+  padding-bottom: 24px;
+}
+
+.gallery {
+  position: relative;
+  flex: 0 0 380px;
+  width: 430px;
+  height: 600px;
+}
+
+.photo {
+  position: absolute;
+  object-fit: cover;
+}
+
+.photo1 {
+  top: 129px;
+  left: 80px;
+  z-index: 2;
+  width: 227px;
+  height: 355px;
+}
+
+.photo2 {
+  top: 0;
+  right: -9px;
+  z-index: 1;
+  width: 167px;
+  height: 253px;
+}
+
+.photo3 {
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  width: 216px;
+  height: 159px;
+}
+
+.shadow1 {
+  position: absolute;
+  top: 67px;
+  left: 30px;
+  z-index: 1;
+  width: 149px;
+  height: 187px;
+  background: linear-gradient(180deg, rgba(249, 240, 229, 0.7) 0%, rgba(249, 240, 229, 0.22) 100%);
+  rotate: -180deg;
+}
+
+.shadow2 {
+  position: absolute;
+  bottom: 80px;
+  right: 0;
+  z-index: 1;
+  width: 134px;
+  height: 189px;
+  background: linear-gradient(180deg, rgba(249, 240, 229, 0.7) 0%, rgba(249, 240, 229, 0.22) 100%);
+  rotate: -180deg;
+}
+
+@media (max-width: 900px) {
+  .section {
+    flex-direction: column;
+  }
+  .gallery {
+    width: 100%;
+    order: -1;
+  }
+}
