@@ -6,6 +6,7 @@ import ComfortSection from '@/components/ComfortSection/ComfortSection';
 import FansSection from '@/components/FansSection/FansSection';
 import FaqSection from '@/components/FaqSection/FaqSection';
 import ImpactSection from '@/components/ImpactSection/ImpactSection';
+import FindSomethingSection from '@/components/FindSomethingSection/FindSomethingSection';
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <FansSection />
       <FaqSection />
       <ImpactSection />
+      <FindSomethingSection />
     </>
   );
 }

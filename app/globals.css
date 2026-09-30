@@ -6,6 +6,7 @@
   --color-background-light: #f0eeef;
 
   --color-navy: #01005b;
+  --color-btn-hover: #1c1c86;
   --color-purple-dark: #15005b;
   --color-indigo: #2a2996;
   --color-avatar: #1c2e58;
@@ -18,6 +19,8 @@
   --color-gray-600: #6c6c6c;
   --color-gray-medium: #868787;
   --container-w: 1253px;
+
+  --color-green: #1fad40;
 }
 
 * {

@@ -1,3 +1,5 @@
+/* components/BestSelfSection/BestSelfSection.module.css */
+
 .section {
   padding: 83px 0 95px;
   background-color: var(--color-background-light);
@@ -85,4 +87,9 @@
   letter-spacing: 0.03em;
   text-align: center;
   color: var(--background);
+  transition: background-color 300ms ease-in-out;
+}
+
+.btn:hover {
+  background-color: var(--color-btn-hover);
 }

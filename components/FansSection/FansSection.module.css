@@ -1,3 +1,5 @@
+/* components/FansSection/FansSection.module.css */
+
 .section {
   padding-top: 37px;
   padding-bottom: 54px;
@@ -155,7 +157,7 @@
   justify-content: center;
   align-items: center;
   gap: 16px;
-  background: var(--color-navy);
+  background-color: var(--color-navy);
   padding: 14px 28px;
   border-radius: 5px;
   width: 369px;
@@ -167,6 +169,11 @@
   text-align: center;
   color: var(--background);
   margin-bottom: 11px;
+  transition: background-color 300ms ease-in-out;
+}
+
+.cta:hover {
+  background-color: var(--color-btn-hover);
 }
 
 .cta svg {

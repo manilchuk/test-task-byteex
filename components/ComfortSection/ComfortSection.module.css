@@ -1,3 +1,5 @@
+/* components/ComfortSection/ComfortSection.module.css */
+
 .section {
   padding: 75px 0 37px;
   text-align: center;
@@ -91,6 +93,11 @@
   text-align: center;
   color: var(--background);
   margin-bottom: 11px;
+  transition: background-color 300ms ease-in-out;
+}
+
+.cta:hover {
+  background-color: var(--color-btn-hover);
 }
 
 .cta svg {

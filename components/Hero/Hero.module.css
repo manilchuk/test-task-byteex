@@ -1,3 +1,5 @@
+/* components/Hero/Hero.module.css */
+
 .hero {
   position: relative;
   display: grid;
@@ -53,7 +55,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #01005b;
+  background-color: var(--color-navy);
 
   font-family: var(--font-suisse-int), sans-serif;
   font-weight: 400;
@@ -64,11 +66,11 @@
   color: var(--background);
   padding: 14px 28px;
   min-height: 44px;
-  transition: background-color 0.2s;
+  transition: background-color 300ms ease-in-out;
 }
 
 .cta:hover {
-  background-color: #1c1c86;
+  background-color: var(--color-btn-hover);
 }
 
 .arrow {
@@ -95,7 +97,7 @@
   left: 0;
   bottom: -80px;
   z-index: 2;
-  background: #fff;
+  background: var(--background);
   box-shadow:
     0 -2px 8px rgba(0, 0, 0, 0.04),
     0 3px 10px rgba(0, 0, 0, 0.08);
