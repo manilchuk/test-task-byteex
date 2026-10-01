@@ -1,36 +1,44 @@
 import Image from 'next/image';
+import { client } from '@/sanity/lib/client';
+import { pressQuery } from '@/sanity/lib/queries';
 import styles from './Press.module.css';
 
-const LOGOS = [
-  { id: 1, src: '/images/press-eco-stylist.webp', alt: 'Eco-Stylist', width: 120, height: 20 },
-  {
-    id: 2,
-    src: '/images/press-canadian-living.webp',
-    alt: 'Canadian Living',
-    width: 130,
-    height: 30,
-  },
-  {
-    id: 3,
-    src: '/images/press-jillian-harris.webp',
-    alt: 'Jillian Harris',
-    width: 150,
-    height: 24,
-  },
-  { id: 4, src: '/images/press-eco-hub.webp', alt: 'The Eco Hub', width: 140, height: 24 },
-  { id: 5, src: '/images/press-trendhunter.webp', alt: 'Trendhunter', width: 140, height: 24 },
-];
+type PressLogo = {
+  name: string;
+  imageUrl: string | null;
+};
 
-export default function Press() {
+type PressData = {
+  label: string;
+  logos: PressLogo[];
+};
+
+const FALLBACK: PressData = {
+  label: 'as seen in',
+  logos: [
+    { name: 'Eco-Stylist', imageUrl: '/images/press-eco-stylist.webp' },
+    { name: 'Canadian Living', imageUrl: '/images/press-canadian-living.webp' },
+    { name: 'Jillian Harris', imageUrl: '/images/press-jillian-harris.webp' },
+    { name: 'The Eco Hub', imageUrl: '/images/press-eco-hub.webp' },
+    { name: 'Trendhunter', imageUrl: '/images/press-trendhunter.webp' },
+  ],
+};
+
+export default async function Press() {
+  const data = await client.fetch<PressData | null>(pressQuery);
+  const press = data && data.logos?.length ? data : FALLBACK;
+
   return (
     <section className={styles.press}>
-      <p className={styles.label}>as seen in</p>
+      <p className={styles.label}>{press.label}</p>
       <ul className={styles.logos}>
-        {LOGOS.map(({ id, src, alt, width, height }) => (
-          <li key={id}>
-            <Image src={src} alt={alt} width={width} height={height} />
-          </li>
-        ))}
+        {press.logos.map(({ name, imageUrl }) =>
+          imageUrl ? (
+            <li key={name}>
+              <Image src={imageUrl} alt={name} width={140} height={24} />
+            </li>
+          ) : null
+        )}
       </ul>
     </section>
   );

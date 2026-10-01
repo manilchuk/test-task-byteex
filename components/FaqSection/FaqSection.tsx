@@ -1,69 +1,23 @@
-'use client';
-
-import { useState } from 'react';
 import Image from 'next/image';
+import { client } from '@/sanity/lib/client';
+import { faqQuery } from '@/sanity/lib/queries';
+import FaqAccordion from './FaqAccordion';
 import styles from './FaqSection.module.css';
 
-const FAQ = [
-  {
-    id: 1,
-    q: 'lorem ipsum dolor sit amet',
-    a: 'Our fabrics and garments are made in Portugal. We build strong relationships with our immediate suppliers and visit as often as possible.',
-  },
-  {
-    id: 2,
-    q: 'lorem ipsum dolor sit amet',
-    a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lobortis sapien facilisis tincidunt pellentesque. In eget ipsum et felis finibus consequat.',
-  },
-  {
-    id: 3,
-    q: 'lorem ipsum dolor sit amet',
-    a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lobortis sapien facilisis tincidunt pellentesque. In eget ipsum et felis finibus consequat.',
-  },
-  {
-    id: 4,
-    q: 'lorem ipsum dolor sit amet',
-    a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lobortis sapien facilisis tincidunt pellentesque. In eget ipsum et felis finibus consequat.',
-  },
-  {
-    id: 5,
-    q: 'lorem ipsum dolor sit amet',
-    a: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lobortis sapien facilisis tincidunt pellentesque. In eget ipsum et felis finibus consequat.',
-  },
-];
+type FaqItem = {
+  question: string;
+  answer: string;
+};
 
-export default function FaqSection() {
-  // Перше питання відкрите за замовчуванням (open = 0) — так і на десктопі, і на мобільному макеті.
-  const [open, setOpen] = useState(0);
+export default async function FaqSection() {
+  const data = await client.fetch<{ items: FaqItem[] } | null>(faqQuery);
+  const items = data?.items ?? [];
 
   return (
     <section className={`container ${styles.section}`}>
       <div className={styles.list}>
         <h2>Frequently asked questions.</h2>
-
-        <ul className={styles.faq}>
-          {FAQ.map(({ id, q, a }, i) => (
-            <li key={id}>
-              <button
-                type="button"
-                className={styles.question}
-                aria-expanded={open === i}
-                aria-controls={`faq-panel-${id}`}
-                onClick={() => setOpen(open === i ? -1 : i)}
-              >
-                {q}
-
-                <svg className={styles.icon} aria-hidden="true">
-                  <use href={`/icons/sprite.svg#${open === i ? 'icon-minus' : 'icon-plus'}`} />
-                </svg>
-              </button>
-
-              <div id={`faq-panel-${id}`} className={styles.answer} hidden={open !== i}>
-                <p>{a}</p>
-              </div>
-            </li>
-          ))}
-        </ul>
+        <FaqAccordion items={items} />
       </div>
 
       <div className={styles.gallery} aria-hidden="true">

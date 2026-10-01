@@ -1,29 +1,49 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { client } from '@/sanity/lib/client';
+import { heroQuery } from '@/sanity/lib/queries';
 import styles from './Hero.module.css';
 
-const BULLETS = [
-  {
-    id: 1,
-    icon: '/icons/sprite.svg#icon-comfort',
-    text: 'Beautiful, comfortable loungewear for day or night.',
-  },
-  {
-    id: 2,
-    icon: '/icons/sprite.svg#icon-packaging',
-    text: 'No wasteful extras, like tags or plastic packaging.',
-  },
-  {
-    id: 3,
-    icon: '/icons/sprite.svg#icon-fabric',
-    text: 'Our signature fabric is incredibly comfortable — unlike anything you’ve ever felt.',
-  },
-];
+type HeroBullet = {
+  icon: string;
+  text: string;
+};
 
-export default function Hero() {
+type HeroData = {
+  title: string;
+  bullets: HeroBullet[];
+  ctaLabel: string;
+  reviewAuthor: string;
+  reviewBadge: string;
+  reviewText: string;
+};
+
+// Фолбек на випадок, якщо документ hero ще не створений/опублікований
+// у Sanity — сторінка не повинна ламатись, поки контент заповнюється.
+const FALLBACK: HeroData = {
+  title: 'Don\u2019t apologize for being comfortable.',
+  bullets: [
+    { icon: 'icon-comfort', text: 'Beautiful, comfortable loungewear for day or night.' },
+    { icon: 'icon-packaging', text: 'No wasteful extras, like tags or plastic packaging.' },
+    {
+      icon: 'icon-fabric',
+      text: 'Our signature fabric is incredibly comfortable \u2014 unlike anything you\u2019ve ever felt.',
+    },
+  ],
+  ctaLabel: 'Customize Your Outfit',
+  reviewAuthor: 'Amy P.',
+  reviewBadge: 'One of 500+ 5 Star Reviews Online',
+  reviewText:
+    'Overjoyed with my Loungewear set. I have the jogger and the sweatshirt. Quality product on every level. From the compostable packaging, to the supplied washing bag, even the garments smells like fresh herbs when I first held them.',
+};
+
+export default async function Hero() {
+  const data = await client.fetch<HeroData | null>(heroQuery);
+  const hero = data ?? FALLBACK;
+
   return (
     <section className={`container ${styles.hero}`}>
-      <h1 className={styles.title}>Don&rsquo;t apologize for being comfortable.</h1>
+      <h1 className={styles.title}>{hero.title}</h1>
 
       <div className={styles.collage} aria-hidden="true">
         <Image
@@ -52,10 +72,10 @@ export default function Hero() {
       </div>
 
       <ul className={styles.bullets}>
-        {BULLETS.map(({ id, icon, text }) => (
-          <li key={id} className={styles.bullet}>
+        {hero.bullets.map(({ icon, text }, i) => (
+          <li key={i} className={styles.bullet}>
             <svg className={styles.bulletIcon} aria-hidden="true" width={31} height={31}>
-              <use href={icon} />
+              <use href={`/icons/sprite.svg#${icon}`} />
             </svg>
 
             <p className={styles.bulletText}>{text}</p>
@@ -64,7 +84,7 @@ export default function Hero() {
       </ul>
 
       <Link href="#customize" className={styles.cta}>
-        Customize Your Outfit{' '}
+        {hero.ctaLabel}{' '}
         <span className={styles.arrow} aria-hidden="true">
           <svg>
             <use href="/icons/sprite.svg#icon-arrow" />
@@ -81,24 +101,16 @@ export default function Hero() {
           className={styles.avatar}
         />
         <figcaption className={styles.headerText}>
-          <b>Amy P.</b>{' '}
+          <b>{hero.reviewAuthor}</b>{' '}
           <span className={styles.stars} aria-label="5 stars">
             <svg className={styles.star} aria-hidden="true">
               <use href="/icons/sprite.svg#icon-stars" />
             </svg>
           </span>{' '}
-          <span className={styles.reviewText}>One of 500+ 5 Star Reviews Online</span>
+          <span className={styles.reviewText}>{hero.reviewBadge}</span>
         </figcaption>
-        <p className={styles.reviewTextDesktop}>
-          Overjoyed with my Loungewear set. I have the jogger and the sweatshirt. Quality product on
-          every level. From the compostable packaging, to the supplied washing bag, even the
-          garments smells like fresh herbs when I first held them.
-        </p>
-
-        <p className={styles.reviewTextMobile}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sed sollicitudin
-          dolor, non sodales justo.
-        </p>
+        <p className={styles.reviewTextDesktop}>{hero.reviewText}</p>
+        <p className={styles.reviewTextMobile}>{hero.reviewText}</p>
       </figure>
     </section>
   );
