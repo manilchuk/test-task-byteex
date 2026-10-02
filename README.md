@@ -3,7 +3,7 @@
 A pixel-accurate recreation of the Byteex product landing page design (Figma), built as a standard
 development test task: Next.js front end + Sanity as a headless CMS, version-controlled on GitHub.
 
-**Live repo:** https://github.com/manilchuk/test-task-byteex
+**Live repo:** https://byteex-rho.vercel.app/
 
 ## Table of contents
 
