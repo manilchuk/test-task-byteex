@@ -1,75 +1,57 @@
-'use client';
-
-import { useState } from 'react';
 import Link from 'next/link';
+import { client } from '@/sanity/lib/client';
+import { comfortQuery } from '@/sanity/lib/queries';
+import ComfortSteps from './ComfortSteps';
 import styles from './ComfortSection.module.css';
 
-const STEPS = [
-  {
-    id: 1,
-    icon: '/icons/sprite.svg#icon-eco-store',
-    title: 'You save.',
-    text: 'Browse our comfort sets and save 15% when you bundle.',
-  },
-  {
-    id: 2,
-    icon: '/icons/sprite.svg#icon-truck',
-    title: 'We ship.',
-    text: 'We ship your items within 1–2 days of receiving your order.',
-    tint: true,
-  },
-  {
-    id: 3,
-    icon: '/icons/sprite.svg#icon-sun-moon',
-    title: 'You enjoy!',
-    text: 'Wear hernest around the house, out on the town, or in bed.',
-  },
-];
+type Step = {
+  icon: string;
+  title: string;
+  text: string;
+  tint?: boolean;
+};
 
-export default function ComfortSection() {
-  const [active, setActive] = useState(0);
-  const last = STEPS.length - 1;
+type ComfortData = {
+  sectionTitle: string;
+  steps: Step[];
+  ctaLabel: string;
+};
 
-  const prev = () => setActive(i => (i === 0 ? last : i - 1));
-  const next = () => setActive(i => (i === last ? 0 : i + 1));
+const FALLBACK: ComfortData = {
+  sectionTitle: 'Comfort made easy',
+  steps: [
+    {
+      icon: 'icon-eco-store',
+      title: 'You save.',
+      text: 'Browse our comfort sets and save 15% when you bundle.',
+    },
+    {
+      icon: 'icon-truck',
+      title: 'We ship.',
+      text: 'We ship your items within 1\u20132 days of receiving your order.',
+      tint: true,
+    },
+    {
+      icon: 'icon-sun-moon',
+      title: 'You enjoy!',
+      text: 'Wear hernest around the house, out on the town, or in bed.',
+    },
+  ],
+  ctaLabel: 'Customize Your Outfit',
+};
+
+export default async function ComfortSection() {
+  const data = await client.fetch<ComfortData | null>(comfortQuery);
+  const comfort = data && data.steps?.length ? data : FALLBACK;
 
   return (
     <section className={`container ${styles.section}`}>
-      <h2 className={styles.title}>Comfort made easy</h2>
+      <h2 className={styles.title}>{comfort.sectionTitle}</h2>
 
-      <div className={styles.carousel}>
-        <button type="button" className={styles.arrow} aria-label="Previous" onClick={prev}>
-          <svg aria-hidden="true">
-            <use href="/icons/sprite.svg#icon-arrow-left" />
-          </svg>
-        </button>
-
-        <div className={styles.cards}>
-          {STEPS.map(({ id, icon, title, text, tint }, i) => (
-            <article
-              key={id}
-              className={`${styles.card} ${tint ? styles.cardTint : ''} ${
-                i === active ? styles.cardActive : ''
-              }`}
-            >
-              <svg className={styles.icon} aria-hidden="true">
-                <use href={icon} />
-              </svg>
-              <h3>{title}</h3>
-              <p>{text}</p>
-            </article>
-          ))}
-        </div>
-
-        <button type="button" className={styles.arrow} aria-label="Next" onClick={next}>
-          <svg aria-hidden="true">
-            <use href="/icons/sprite.svg#icon-arrow-right" />
-          </svg>
-        </button>
-      </div>
+      <ComfortSteps steps={comfort.steps} />
 
       <Link href="#customize" className={styles.cta}>
-        Customize Your Outfit{' '}
+        {comfort.ctaLabel}{' '}
         <span aria-hidden="true">
           <svg>
             <use href="/icons/sprite.svg#icon-arrow" />
