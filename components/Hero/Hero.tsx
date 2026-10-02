@@ -100,7 +100,7 @@ export default async function Hero() {
         />
         <figcaption className={styles.headerText}>
           <b>{hero.reviewAuthor}</b>{' '}
-          <span className={styles.stars} aria-label="5 stars">
+          <span className={styles.stars} role="img" aria-label="5 stars">
             <svg className={styles.star} aria-hidden="true">
               <use href="/icons/sprite.svg#icon-stars" />
             </svg>

@@ -71,7 +71,7 @@ export default function FansTestimonials({ testimonials }: { testimonials: Testi
                   <div className={styles.avatar} aria-hidden="true" />
 
                   <div className={styles.avtor}>
-                    <span className={styles.stars} aria-label="5 stars">
+                    <span className={styles.stars} role="img" aria-label="5 stars">
                       <svg aria-hidden="true">
                         <use href="/icons/sprite.svg#icon-stars" />
                       </svg>

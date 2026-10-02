@@ -74,7 +74,7 @@ export default async function FansSection() {
       </Link>
 
       <p className={styles.proof}>
-        <span className={styles.stars} aria-label="5 stars">
+        <span className={styles.stars} role="img" aria-label="5 stars">
           <svg aria-hidden="true">
             <use href="/icons/sprite.svg#icon-stars" />
           </svg>
