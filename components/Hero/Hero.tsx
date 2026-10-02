@@ -18,8 +18,6 @@ type HeroData = {
   reviewText: string;
 };
 
-// Фолбек на випадок, якщо документ hero ще не створений/опублікований
-// у Sanity — сторінка не повинна ламатись, поки контент заповнюється.
 const FALLBACK: HeroData = {
   title: 'Don\u2019t apologize for being comfortable.',
   bullets: [
