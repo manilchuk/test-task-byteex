@@ -65,3 +65,8 @@ export const findSomethingQuery = groq`*[_type == "findSomething"][0]{
   "photoCenterUrl": photoCenter.asset->url,
   "photoRightUrl": photoRight.asset->url
 }`;
+
+export const headerQuery = groq`*[_type == "header"][0]{
+  announcements,
+  "logoUrl": logo.asset->url
+}`;

@@ -7,6 +7,7 @@ import { comfortSchemas } from './comfort';
 import { fansSchemas } from './fans';
 import { impactSchemas } from './impact';
 import { findSomethingSchemas } from './findSomething';
+import { headerSchemas } from './header';
 
 export const schemaTypes = [
   ...faqSchemas,
@@ -18,4 +19,5 @@ export const schemaTypes = [
   ...fansSchemas,
   ...impactSchemas,
   ...findSomethingSchemas,
+  ...headerSchemas,
 ];
