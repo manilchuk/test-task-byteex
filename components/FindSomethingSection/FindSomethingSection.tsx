@@ -1,73 +1,90 @@
 import Image from 'next/image';
-import styles from './FindSomethingSection.module.css';
 import Link from 'next/link';
+import { client } from '@/sanity/lib/client';
+import { findSomethingQuery } from '@/sanity/lib/queries';
+import styles from './FindSomethingSection.module.css';
 
-const BENEFITS = [
-  {
-    id: 1,
-    icon: '/icons/sprite.svg#icon-free-shipping',
-    title: 'FREE Shipping on',
-    text: 'Orders over $200',
-  },
-  {
-    id: 2,
-    icon: '/icons/sprite.svg#icon-reviews',
-    title: 'Over 500+ 5 Star',
-    text: 'Reviews Online',
-  },
-  {
-    id: 3,
-    icon: '/icons/sprite.svg#icon-made-ethically',
-    title: 'Made ethically',
-    text: 'and responsibly.',
-  },
-];
+type Benefit = {
+  icon: string;
+  title: string;
+  text: string;
+};
 
-// const PAYMENT_METHODS = ['AMEX', 'Apple Pay', 'Diners', 'G Pay', 'Mastercard', 'Pay', 'VISA'];
+type FindSomethingData = {
+  title: string;
+  subtitle: string;
+  ctaLabel: string;
+  shippingText: string;
+  benefits: Benefit[];
+  photoLeftUrl: string | null;
+  photoCenterUrl: string | null;
+  photoRightUrl: string | null;
+};
 
-export default function FindSomethingSection() {
+const FALLBACK: FindSomethingData = {
+  title: 'Find something you love.',
+  subtitle:
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lobortis sapien facilisis tincidunt pellentesque. In eget ipsum et felis finibus consequat.',
+  ctaLabel: 'Customize Your Outfit',
+  shippingText: 'Ships in 1-2 Days',
+  benefits: [
+    { icon: 'icon-free-shipping', title: 'FREE Shipping on', text: 'Orders over $200' },
+    { icon: 'icon-reviews', title: 'Over 500+ 5 Star', text: 'Reviews Online' },
+    { icon: 'icon-made-ethically', title: 'Made ethically', text: 'and responsibly.' },
+  ],
+  photoLeftUrl: '/images/hero-5.webp',
+  photoCenterUrl: '/images/hero-4.webp',
+  photoRightUrl: '/images/hero-1.webp',
+};
+
+export default async function FindSomethingSection() {
+  const data = await client.fetch<FindSomethingData | null>(findSomethingQuery);
+  const content = data?.title ? data : FALLBACK;
+
   return (
     <section className={styles.section}>
       <div className={`container ${styles.container}`}>
         <div className={styles.intro}>
-          <h2>Find something you love.</h2>
-
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lobortis sapien facilisis
-            tincidunt pellentesque. In eget ipsum et felis finibus consequat.
-          </p>
+          <h2>{content.title}</h2>
+          <p>{content.subtitle}</p>
         </div>
 
         <div className={styles.gallery}>
           <div className={styles.galleryBackground} />
 
-          <Image
-            src="/images/hero-5.webp"
-            alt="Girl in Comfortable Movements"
-            width={223}
-            height={338}
-            className={`${styles.photo} ${styles.photoLeft}`}
-          />
+          {content.photoLeftUrl && (
+            <Image
+              src={content.photoLeftUrl}
+              alt=""
+              width={223}
+              height={338}
+              className={`${styles.photo} ${styles.photoLeft}`}
+            />
+          )}
 
-          <Image
-            src="/images/hero-4.webp"
-            alt="Girl in Delicate Silk"
-            width={263}
-            height={399}
-            className={`${styles.photo} ${styles.photoCenter}`}
-          />
+          {content.photoCenterUrl && (
+            <Image
+              src={content.photoCenterUrl}
+              alt=""
+              width={263}
+              height={399}
+              className={`${styles.photo} ${styles.photoCenter}`}
+            />
+          )}
 
-          <Image
-            src="/images/hero-1.webp"
-            alt="Girl in Cropped Top & Shorts Set"
-            width={223}
-            height={338}
-            className={`${styles.photo} ${styles.photoRight}`}
-          />
+          {content.photoRightUrl && (
+            <Image
+              src={content.photoRightUrl}
+              alt=""
+              width={223}
+              height={338}
+              className={`${styles.photo} ${styles.photoRight}`}
+            />
+          )}
         </div>
 
         <Link href="#customize" className={styles.cta}>
-          Customize Your Outfit
+          {content.ctaLabel}
           <span aria-hidden="true">
             <svg>
               <use href="/icons/sprite.svg#icon-arrow" />
@@ -80,7 +97,7 @@ export default function FindSomethingSection() {
             <svg className={styles.shippingIcon} aria-hidden="true">
               <use href="/icons/sprite.svg#icon-clock" />
             </svg>
-            Ships in 1-2 Days
+            {content.shippingText}
           </span>
           <span className={styles.divider} aria-hidden="true" />
           <Image
@@ -93,11 +110,11 @@ export default function FindSomethingSection() {
         </div>
 
         <div className={styles.benefits}>
-          {BENEFITS.map(({ id, icon, title, text }) => (
-            <div key={id} className={styles.benefit}>
+          {content.benefits.map(({ icon, title, text }, i) => (
+            <div key={i} className={styles.benefit}>
               <div className={styles.benefitIcon}>
                 <svg aria-hidden="true">
-                  <use href={icon} />
+                  <use href={`/icons/sprite.svg#${icon}`} />
                 </svg>
               </div>
 

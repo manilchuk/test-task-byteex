@@ -5,6 +5,8 @@ import { featuresSchemas } from './features';
 import { bestSelfSchemas } from './bestSelf';
 import { comfortSchemas } from './comfort';
 import { fansSchemas } from './fans';
+import { impactSchemas } from './impact';
+import { findSomethingSchemas } from './findSomething';
 
 export const schemaTypes = [
   ...faqSchemas,
@@ -14,4 +16,6 @@ export const schemaTypes = [
   ...bestSelfSchemas,
   ...comfortSchemas,
   ...fansSchemas,
+  ...impactSchemas,
+  ...findSomethingSchemas,
 ];

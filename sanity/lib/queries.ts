@@ -49,3 +49,19 @@ export const fansQuery = groq`*[_type == "fans"][0]{
   testimonials,
   ctaLabel
 }`;
+
+export const impactQuery = groq`*[_type == "impact"][0]{
+  sectionTitle,
+  stats
+}`;
+
+export const findSomethingQuery = groq`*[_type == "findSomething"][0]{
+  title,
+  subtitle,
+  ctaLabel,
+  shippingText,
+  benefits,
+  "photoLeftUrl": photoLeft.asset->url,
+  "photoCenterUrl": photoCenter.asset->url,
+  "photoRightUrl": photoRight.asset->url
+}`;

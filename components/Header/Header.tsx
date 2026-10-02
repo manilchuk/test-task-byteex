@@ -19,7 +19,7 @@ export default function Header() {
 
       <div className={`container ${styles.logoRow}`}>
         <Link href="/" className={styles.logo} aria-label="Byteex — home">
-          <Image src="/images/logo.webp" alt="Byteex" width={200} height={36} />
+          <Image src="/images/logo.webp" alt="Byteex" width={200} height={36} priority />
         </Link>
       </div>
     </header>
