@@ -17,7 +17,8 @@ const inter = Inter({
   display: 'swap',
 });
 
-const SITE_URL = 'https://byteex-rho.vercel.app/';
+const SITE_URL = 'https://byteex-rho.vercel.app';
+export const revalidate = 60;
 const SITE_NAME = 'Byteex';
 const SITE_DESCRIPTION =
   'Beautiful, comfortable loungewear for day or night. Ethically sourced, responsibly made, and unimaginably comfortable.';
