@@ -56,13 +56,13 @@
 
 .cta {
   grid-area: cta;
-  position: relative;
   border-radius: 5px;
   width: 356px;
   height: 56px;
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 16px;
   background-color: var(--color-navy);
 
   font-family: var(--font-suisse-int), sans-serif;
@@ -82,12 +82,7 @@
 }
 
 .arrow {
-  position: absolute;
-  right: 34px;
-  top: 50%;
-  transform: translateY(100%);
-
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
 }
@@ -282,35 +277,60 @@
     color: var(--foreground);
   }
 
+  /* Та сама композиція, що на десктопі (накладені фото з офсетами),
+     просто в % від контейнера замість px — масштабується пропорційно
+     під будь-яку ширину екрана, а не розтягується в рівний ряд. */
   .collage {
-    width: 100%;
-    max-width: none;
+    position: relative;
+    width: min(380px, 88vw);
+    aspect-ratio: 760 / 423;
     height: auto;
-    display: flex;
-    gap: 8px;
-    min-width: 0;
-  }
-
-  .shadow1,
-  .shadow2 {
-    display: none;
+    margin-inline: auto;
+    display: block;
   }
 
   .photo {
-    position: static;
-    width: auto !important;
-    height: auto !important;
-    flex: 1 1 0;
-    min-width: 0;
-    border-width: 2px;
+    position: absolute;
+    width: auto;
+    height: auto;
   }
 
-  .photo1,
-  .photo3 {
-    aspect-ratio: 209 / 316;
+  /* зсунуті на 10% до центру від краю — трохи заходять під photo2,
+     звільняючи крайні 10% з обох боків під shadow1/shadow2 */
+  .photo1 {
+    left: 10%;
+    top: 12.53%;
+    width: 27.5%;
+    height: 74.7%;
   }
 
   .photo2 {
-    aspect-ratio: 260 / 422;
+    left: 50%;
+    top: 0;
+    width: 34.21%;
+    height: 99.76%;
+    transform: translateX(-50%);
+    border-width: 1px;
+  }
+
+  .photo3 {
+    right: 10%;
+    top: 12.53%;
+    width: 27.5%;
+    height: 74.7%;
+  }
+
+  .shadow1 {
+    left: 0;
+    top: 27.42%;
+    width: 17.63%;
+    height: 44.68%;
+  }
+
+  .shadow2 {
+    right: 0;
+    top: 27.42%;
+    width: 17.63%;
+    height: 44.68%;
   }
 }

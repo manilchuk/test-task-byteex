@@ -1,6 +1,6 @@
-import Image from 'next/image';
 import { client } from '@/sanity/lib/client';
 import { pressQuery } from '@/sanity/lib/queries';
+import PressLogos from './PressLogos';
 import styles from './Press.module.css';
 
 type PressLogo = {
@@ -31,15 +31,7 @@ export default async function Press() {
   return (
     <section className={styles.press}>
       <p className={styles.label}>{press.label}</p>
-      <ul className={styles.logos}>
-        {press.logos.map(({ name, imageUrl }) =>
-          imageUrl ? (
-            <li key={name}>
-              <Image src={imageUrl} alt={name} width={140} height={24} />
-            </li>
-          ) : null
-        )}
-      </ul>
+      <PressLogos logos={press.logos} />
     </section>
   );
 }

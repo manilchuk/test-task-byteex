@@ -24,6 +24,28 @@
   max-width: var(--container-w);
 }
 
+.logoItem {
+  display: inline-flex;
+}
+
+.dots {
+  display: none;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 0;
+  padding: 0;
+  background: #c4c4c4;
+  cursor: pointer;
+}
+
+.dotActive {
+  background: #000;
+}
+
 @media (max-width: 900px) {
   .press {
     padding: 48px 24px 40px;
@@ -35,13 +57,40 @@
   }
 
   .logos {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 24px 32px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    max-width: 100%;
   }
 
-  .logos img {
+  .logos::-webkit-scrollbar {
+    display: none;
+  }
+
+  .logoItem {
+    flex: 0 0 33.333%;
+    justify-content: center;
+    scroll-snap-align: start;
+  }
+
+  .logoItem img {
     height: 18px;
     width: auto;
+  }
+
+  .logoItem[data-logo='Eco-Stylist'] img {
+    width: 127px;
+    height: 16px;
+    object-fit: contain;
+  }
+
+  .dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 14px;
   }
 }

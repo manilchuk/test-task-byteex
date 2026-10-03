@@ -35,9 +35,17 @@ const FALLBACK: HeroData = {
     'Overjoyed with my Loungewear set. I have the jogger and the sweatshirt. Quality product on every level. From the compostable packaging, to the supplied washing bag, even the garments smells like fresh herbs when I first held them.',
 };
 
+const MOBILE_REVIEW_MAX_LENGTH = 112;
+
+function truncate(text: string, maxLength: number): string {
+  if (text.length <= maxLength) return text;
+  return text.slice(0, maxLength).trimEnd() + '…';
+}
+
 export default async function Hero() {
   const data = await client.fetch<HeroData | null>(heroQuery);
   const hero = data ?? FALLBACK;
+  const reviewTextMobile = truncate(hero.reviewText, MOBILE_REVIEW_MAX_LENGTH);
 
   return (
     <section className={`container ${styles.hero}`}>
@@ -108,7 +116,7 @@ export default async function Hero() {
           <span className={styles.reviewText}>{hero.reviewBadge}</span>
         </figcaption>
         <p className={styles.reviewTextDesktop}>{hero.reviewText}</p>
-        <p className={styles.reviewTextMobile}>{hero.reviewText}</p>
+        <p className={styles.reviewTextMobile}>{reviewTextMobile}</p>
       </figure>
     </section>
   );
