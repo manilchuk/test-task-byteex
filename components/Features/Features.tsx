@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { client } from '@/sanity/lib/client';
 import { featuresQuery } from '@/sanity/lib/queries';
 import FeaturesGallery from './FeaturesGallery';
@@ -20,6 +21,7 @@ type FeaturesData = {
   gallery: GallerySlide[];
 };
 
+// Фолбек на випадок, якщо документ features ще не створений/опублікований.
 const FALLBACK: FeaturesData = {
   sectionTitle: 'Loungewear you can be proud of.',
   items: [
@@ -57,9 +59,11 @@ export default async function Features() {
 
   return (
     <section className={`container ${styles.features}`}>
-      <div className={styles.list}>
-        <h2>{features.sectionTitle}</h2>
+      <h2 className={styles.sectionTitle}>{features.sectionTitle}</h2>
 
+      <FeaturesGallery slides={features.gallery} />
+
+      <div className={styles.list}>
         {features.items.map(({ icon, title, text }, i) => (
           <article key={i} className={styles.feature}>
             <svg className={styles.icon} aria-hidden="true">
@@ -74,7 +78,23 @@ export default async function Features() {
         ))}
       </div>
 
-      <FeaturesGallery slides={features.gallery} />
+      <Link href="#customize" className={styles.cta}>
+        Customize Your Outfit{' '}
+        <span aria-hidden="true">
+          <svg>
+            <use href="/icons/sprite.svg#icon-arrow" />
+          </svg>
+        </span>
+      </Link>
+
+      <p className={styles.proof}>
+        <span className={styles.stars} role="img" aria-label="5 stars">
+          <svg aria-hidden="true">
+            <use href="/icons/sprite.svg#icon-stars" />
+          </svg>
+        </span>
+        <span>Over 500+ 5 Star Reviews Online</span>
+      </p>
     </section>
   );
 }
