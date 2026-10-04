@@ -80,6 +80,12 @@ const features = defineType({
       type: 'array',
       of: [{ type: 'gallerySlide' }],
     }),
+    defineField({
+      name: 'ctaLabel',
+      title: 'CTA button label (mobile only)',
+      type: 'string',
+      initialValue: 'Customize Your Outfit',
+    }),
   ],
 });
 

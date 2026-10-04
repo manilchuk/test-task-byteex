@@ -25,7 +25,8 @@ export const featuresQuery = groq`*[_type == "features"][0]{
   gallery[]{
     caption,
     "imageUrl": image.asset->url
-  }
+  },
+  ctaLabel
 }`;
 
 export const bestSelfQuery = groq`*[_type == "bestSelf"][0]{

@@ -150,7 +150,6 @@
   color: var(--foreground);
 }
 
-/* крапки-пагінація: видимі лише на мобільному */
 .dots {
   display: none;
   justify-content: center;
@@ -220,15 +219,23 @@
   fill: currentColor;
 }
 
-/* --- Mobile: one testimonial card per "page", dots visible --- */
 @media (max-width: 900px) {
   .mosaic {
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(auto-fill, 100px);
+    grid-auto-rows: 100px;
+    justify-content: center;
+    max-height: calc(100px * 2 + 5px);
+    overflow: hidden;
   }
 
   .section {
     padding-top: 24px;
     padding-bottom: 40px;
+  }
+
+  .heading h2 {
+    font-size: 26px;
+    line-height: 1.53;
   }
 
   .heading p {
@@ -239,15 +246,26 @@
     margin-bottom: 40px;
   }
 
+  .reviews {
+    gap: 34px;
+  }
+
+  .arrow {
+    position: static;
+    transform: none;
+    flex: none;
+  }
+
   .viewport {
     flex: 1 1 auto;
-    width: 100%;
-    padding: 8px 0;
+    width: auto;
+    padding: 8px;
+    box-sizing: border-box;
   }
 
   .quote {
-    flex: 0 0 100%;
-    width: 100%;
+    flex: 0 0 300px;
+    width: 300px;
   }
 
   .dots {

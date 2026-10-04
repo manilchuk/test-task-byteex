@@ -19,6 +19,7 @@ type FeaturesData = {
   sectionTitle: string;
   items: FeatureItem[];
   gallery: GallerySlide[];
+  ctaLabel: string;
 };
 
 // Фолбек на випадок, якщо документ features ще не створений/опублікований.
@@ -51,6 +52,7 @@ const FALLBACK: FeaturesData = {
     { imageUrl: '/images/hero-2.webp', caption: 'White Robe' },
     { imageUrl: '/images/hero-3.webp', caption: 'Comfortable Set' },
   ],
+  ctaLabel: 'Customize Your Outfit',
 };
 
 export default async function Features() {
@@ -79,7 +81,7 @@ export default async function Features() {
       </div>
 
       <Link href="#customize" className={styles.cta}>
-        Customize Your Outfit{' '}
+        {features.ctaLabel}{' '}
         <span aria-hidden="true">
           <svg>
             <use href="/icons/sprite.svg#icon-arrow" />

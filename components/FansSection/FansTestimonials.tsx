@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import styles from './FansSection.module.css';
 
 type Testimonial = {
@@ -8,22 +8,34 @@ type Testimonial = {
   text: string;
 };
 
-const CARD_WIDTH = 338;
 const GAP = 42;
 
+const DESKTOP_CARD_WIDTH = 338;
+
 export default function FansTestimonials({ testimonials }: { testimonials: Testimonial[] }) {
+  const viewportRef = useRef<HTMLDivElement>(null);
   const [currentPage, setCurrentPage] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [mobileCardWidth, setMobileCardWidth] = useState(0);
 
   useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth <= 900);
-    check();
-    window.addEventListener('resize', check);
-    return () => window.removeEventListener('resize', check);
+    const measure = () => {
+      const mobile = window.innerWidth <= 900;
+
+      setIsMobile(mobile);
+
+      if (viewportRef.current) {
+        setMobileCardWidth(mobile ? viewportRef.current.clientWidth - 16 : 0);
+      }
+    };
+    measure();
+    window.addEventListener('resize', measure);
+    return () => window.removeEventListener('resize', measure);
   }, []);
 
   const reviewsPerPage = isMobile ? 1 : 3;
-  const pageStep = reviewsPerPage * (CARD_WIDTH + GAP);
+  const cardWidth = isMobile ? mobileCardWidth : DESKTOP_CARD_WIDTH;
+  const pageStep = reviewsPerPage * (cardWidth + GAP);
   const totalPages = Math.ceil(testimonials.length / reviewsPerPage);
 
   const [prevReviewsPerPage, setPrevReviewsPerPage] = useState(reviewsPerPage);
@@ -60,13 +72,21 @@ export default function FansTestimonials({ testimonials }: { testimonials: Testi
           </svg>
         </button>
 
-        <div className={styles.viewport}>
+        <div className={styles.viewport} ref={viewportRef}>
           <div
             className={styles.track}
             style={{ transform: `translateX(-${currentPage * pageStep}px)` }}
           >
             {testimonials.map(({ name, text }, i) => (
-              <blockquote key={i} className={styles.quote}>
+              <blockquote
+                key={i}
+                className={styles.quote}
+                style={
+                  isMobile && mobileCardWidth > 0
+                    ? { flex: `0 0 ${mobileCardWidth}px`, width: mobileCardWidth }
+                    : undefined
+                }
+              >
                 <div className={styles.quoteHeader}>
                   <div className={styles.avatar} aria-hidden="true" />
 

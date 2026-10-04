@@ -69,17 +69,17 @@ export default async function BestSelfSection() {
           )}
         </div>
 
-        <div className={styles.list}>
-          <h2 className={styles.title}>{content.title}</h2>
+        <h2 className={styles.title}>{content.title}</h2>
 
+        <div className={styles.list}>
           {content.paragraphs.map((p, i) => (
             <p key={i}>{p}</p>
           ))}
-
-          <Link href="#customize" className={styles.btn}>
-            {content.ctaLabel}
-          </Link>
         </div>
+
+        <Link href="#customize" className={styles.btn}>
+          {content.ctaLabel}
+        </Link>
       </div>
     </section>
   );
