@@ -3,7 +3,8 @@
 A pixel-accurate recreation of the Byteex product landing page design (Figma), built as a standard
 development test task: Next.js front end + Sanity as a headless CMS, version-controlled on GitHub.
 
-**Live repo:** https://byteex-rho.vercel.app
+- **Repository:** https://github.com/manilchuk/test-task-byteex
+- **Live site:** https://byteex-rho.vercel.app
 
 ## Table of contents
 
@@ -135,5 +136,8 @@ redlines.
 
 ## Git workflow
 
-Work is done in feature branches (`feat/<section-name>`) merged into `main`, with commits scoped to
-one section or fix at a time.
+Commits go directly to `main`, scoped to one component, feature, or fix at a time (e.g. one commit
+per section when it was built, one per section when it was wired up to Sanity, one per
+mobile-responsiveness fix) — see the
+[commit history](https://github.com/manilchuk/test-task-byteex/commits/main/) for the full
+progression.
