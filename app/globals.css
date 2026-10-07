@@ -19,6 +19,8 @@
   --container-w: 1253px;
 
   --color-green: #1fad40;
+
+  --color-error: #c0392b;
 }
 
 * {

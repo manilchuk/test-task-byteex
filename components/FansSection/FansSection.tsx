@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { client } from '@/sanity/lib/client';
 import { fansQuery } from '@/sanity/lib/queries';
 import FansTestimonials from './FansTestimonials';
+import ReviewModalTrigger from '@/components/ReviewForm/ReviewModalTrigger';
 import styles from './FansSection.module.css';
 
 type Testimonial = {
@@ -81,6 +82,8 @@ export default async function FansSection() {
         </span>
         <span>Over 500+ 5 Star Reviews Online</span>
       </p>
+
+      <ReviewModalTrigger />
     </section>
   );
 }

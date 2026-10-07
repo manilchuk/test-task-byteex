@@ -1,0 +1,84 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.title {
+  font-family: var(--font-sofia-pro), sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  color: var(--color-navy);
+  text-align: center;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: var(--font-suisse-int), sans-serif;
+  font-size: 13px;
+  color: var(--foreground);
+}
+
+.field input,
+.field textarea {
+  font: inherit;
+  padding: 10px 12px;
+  border: 1px solid var(--color-gray-200, #eaeaea);
+  border-radius: 5px;
+  background: #fff;
+  resize: vertical;
+}
+
+.field input:focus,
+.field textarea:focus {
+  outline: 2px solid var(--color-navy);
+  outline-offset: 1px;
+}
+
+/* honeypot: приховано від звичайних відвідувачів, видиме для ботів-скриптів */
+.hp {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-navy);
+  color: var(--background, #fff);
+  font-family: var(--font-suisse-int), sans-serif;
+  font-size: 15px;
+  padding: 12px 24px;
+  border-radius: 5px;
+  min-height: 44px;
+  transition: background-color 300ms ease-in-out;
+}
+
+.submit:hover:not(:disabled) {
+  background-color: var(--color-btn-hover, #1c1c86);
+}
+
+.submit:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.error {
+  color: #c0392b;
+  font-size: 13px;
+  text-align: center;
+}
+
+.success {
+  font-family: var(--font-sofia-pro), sans-serif;
+  font-size: 15px;
+  color: var(--color-navy);
+  text-align: center;
+}
