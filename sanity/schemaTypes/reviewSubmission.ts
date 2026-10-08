@@ -19,6 +19,12 @@ export const reviewSubmission = defineType({
       validation: rule => rule.required(),
     }),
     defineField({
+      name: 'rating',
+      title: 'Rating',
+      type: 'number',
+      validation: rule => rule.required().min(1).max(5).integer(),
+    }),
+    defineField({
       name: 'submittedAt',
       title: 'Submitted at',
       type: 'datetime',

@@ -47,7 +47,11 @@ export const comfortQuery = groq`*[_type == "comfort"][0]{
 export const fansQuery = groq`*[_type == "fans"][0]{
   heading,
   subheading,
-  testimonials,
+  testimonials[]{
+    name,
+    text,
+    rating
+  },
   ctaLabel
 }`;
 

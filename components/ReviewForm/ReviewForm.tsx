@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, FormEvent } from 'react';
+import StarRating from '@/components/StarRating/StarRating';
 import styles from './ReviewForm.module.css';
 
 type Status = 'idle' | 'submitting' | 'success' | 'error';
@@ -8,6 +9,7 @@ type Status = 'idle' | 'submitting' | 'success' | 'error';
 export default function ReviewForm({ onSuccess }: { onSuccess?: () => void }) {
   const [name, setName] = useState('');
   const [text, setText] = useState('');
+  const [rating, setRating] = useState(0);
   const [website, setWebsite] = useState('');
   const [status, setStatus] = useState<Status>('idle');
   const [errorMessage, setErrorMessage] = useState('');
@@ -21,7 +23,7 @@ export default function ReviewForm({ onSuccess }: { onSuccess?: () => void }) {
       const res = await fetch('/api/submit-review', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, text, website }),
+        body: JSON.stringify({ name, text, rating, website }),
       });
 
       const data = await res.json();
@@ -35,6 +37,7 @@ export default function ReviewForm({ onSuccess }: { onSuccess?: () => void }) {
       setStatus('success');
       setName('');
       setText('');
+      setRating(0);
       setTimeout(() => onSuccess?.(), 2500);
     } catch {
       setErrorMessage('Something went wrong, please try again');
@@ -68,6 +71,11 @@ export default function ReviewForm({ onSuccess }: { onSuccess?: () => void }) {
           disabled={status === 'submitting'}
         />
       </label>
+
+      <div className={styles.ratingField}>
+        <span className={styles.ratingLabel}>Rating</span>
+        <StarRating value={rating} onChange={setRating} name="rating" required />
+      </div>
 
       <label className={styles.field}>
         <span>Your review</span>

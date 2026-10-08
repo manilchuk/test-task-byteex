@@ -18,6 +18,13 @@ const testimonial = defineType({
       rows: 3,
       validation: rule => rule.required(),
     }),
+    defineField({
+      name: 'rating',
+      title: 'Rating',
+      type: 'number',
+      initialValue: 5,
+      validation: rule => rule.required().min(1).max(5).integer(),
+    }),
   ],
   preview: {
     select: { title: 'name', subtitle: 'text' },

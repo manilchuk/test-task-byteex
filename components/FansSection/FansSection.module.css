@@ -127,11 +127,6 @@
   align-items: start;
 }
 
-.stars svg {
-  width: 60px;
-  height: 10px;
-}
-
 .avtor b {
   font-family: var(--font-sofia-pro), sans-serif;
   font-weight: 400;

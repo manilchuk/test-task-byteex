@@ -1,11 +1,13 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import StarRating from '@/components/StarRating/StarRating';
 import styles from './FansSection.module.css';
 
 type Testimonial = {
   name: string;
   text: string;
+  rating: number;
 };
 
 const GAP = 42;
@@ -77,7 +79,7 @@ export default function FansTestimonials({ testimonials }: { testimonials: Testi
             className={styles.track}
             style={{ transform: `translateX(-${currentPage * pageStep}px)` }}
           >
-            {testimonials.map(({ name, text }, i) => (
+            {testimonials.map(({ name, text, rating }, i) => (
               <blockquote
                 key={i}
                 className={styles.quote}
@@ -91,11 +93,7 @@ export default function FansTestimonials({ testimonials }: { testimonials: Testi
                   <div className={styles.avatar} aria-hidden="true" />
 
                   <div className={styles.avtor}>
-                    <span className={styles.stars} role="img" aria-label="5 stars">
-                      <svg aria-hidden="true">
-                        <use href="/icons/sprite.svg#icon-stars" />
-                      </svg>
-                    </span>
+                    <StarRating value={rating} />
                     <b>{name}</b>
                   </div>
                 </div>

@@ -37,7 +37,6 @@
   outline-offset: 1px;
 }
 
-/* honeypot: приховано від звичайних відвідувачів, видиме для ботів-скриптів */
 .hp {
   position: absolute;
   width: 1px;
@@ -81,4 +80,17 @@
   font-size: 15px;
   color: var(--color-navy);
   text-align: center;
+}
+
+.ratingField {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: var(--font-suisse-int), sans-serif;
+  font-size: 13px;
+  color: var(--foreground);
+}
+
+.ratingLabel {
+  display: block;
 }

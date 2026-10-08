@@ -1,0 +1,58 @@
+.stars,
+.starsInteractive {
+  display: inline-flex;
+  align-items: center;
+  height: 10px;
+}
+
+.stars {
+  gap: 1.71875px;
+}
+
+.starsInteractive {
+  gap: 0;
+}
+
+.star {
+  display: block;
+  width: 10.625px;
+  height: 10px;
+  flex: 0 0 auto;
+  fill: #ffb801;
+}
+
+.starEmpty {
+  fill: var(--color-gray-200, #eaeaea);
+}
+
+.starLabel {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0 0.859375px;
+}
+
+.starLabel:first-child {
+  padding-left: 0;
+}
+
+.starLabel:last-child {
+  padding-right: 0;
+}
+
+.radioInput {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  opacity: 0;
+}
+
+.radioInput:focus-visible + .star {
+  outline: 2px solid var(--color-navy);
+  outline-offset: 2px;
+  border-radius: 2px;
+}

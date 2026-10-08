@@ -9,6 +9,7 @@ import styles from './FansSection.module.css';
 type Testimonial = {
   name: string;
   text: string;
+  rating: number;
 };
 
 type FansData = {
@@ -31,14 +32,17 @@ const FALLBACK: FansData = {
     {
       name: 'Jane, S.',
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sed sollicitudin dolor, non sodales justo. Aenean eget aliquet mi.',
+      rating: 5,
     },
     {
       name: 'Jane, S.',
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sed sollicitudin dolor, non sodales justo. Aenean eget aliquet mi.',
+      rating: 5,
     },
     {
       name: 'Jane, S.',
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sed sollicitudin dolor, non sodales justo. Aenean eget aliquet mi.',
+      rating: 5,
     },
   ],
   ctaLabel: 'Customize Your Outfit',

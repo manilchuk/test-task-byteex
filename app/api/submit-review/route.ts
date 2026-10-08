@@ -10,7 +10,12 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 });
   }
 
-  const { name, text, website } = body as { name?: string; text?: string; website?: string };
+  const { name, text, rating, website } = body as {
+    name?: string;
+    text?: string;
+    rating?: number;
+    website?: string;
+  };
 
   if (website) {
     return NextResponse.json({ ok: true });
@@ -27,11 +32,19 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'The text is too long' }, { status: 400 });
   }
 
+  if (typeof rating !== 'number' || !Number.isInteger(rating) || rating < 1 || rating > 5) {
+    return NextResponse.json(
+      { error: 'Rating must be an integer between 1 and 5' },
+      { status: 400 }
+    );
+  }
+
   try {
     await writeClient.create({
       _type: 'reviewSubmission',
       name: trimmedName,
       text: trimmedText,
+      rating,
       submittedAt: new Date().toISOString(),
       reviewed: false,
     });
